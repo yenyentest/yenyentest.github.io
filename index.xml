@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>NTSU SBMD Lab</title>
+    <title>NTSU SBMD Lab haha</title>
     <link>https://yenyentest.github.io/</link>
-    <description>Recent content on NTSU SBMD Lab</description>
+    <description>Recent content on NTSU SBMD Lab haha</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://yenyentest.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -42,7 +42,7 @@
       <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://yenyentest.github.io/2018/05/24/set_up_my_ubuntu_desktop/</guid>
-      <description>Generate SSH Key Pair ssh-keygen -C &amp;#34;zhaohuabing@gmail.com&amp;#34; Shadowsocks Install shadowsokcs sudo apt-get install python3-pip sudo pip3 install shadowsocks Create config at config/shadowsocks.json, with the following content: { &amp;#34;server&amp;#34;:&amp;#34;remote-shadowsocks-server-ip-addr&amp;#34;, &amp;#34;server_port&amp;#34;:443, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:1080, &amp;#34;password&amp;#34;:&amp;#34;your-passwd&amp;#34;, &amp;#34;timeout&amp;#34;:300, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;:false, &amp;#34;workers&amp;#34;:1 } Start a local socks proxy sudo sslocal -c config/shadowsocks.json -d start In case there is an openssl error, modify shadowsocks source file. sudo vi /usr/local/lib/python3.6/dist-packages/shadowsocks/crypto/openssl.py :%s/cleanup/reset/gc Convert shadowsocks socks proxy to http proxy</description>
+      <description>Generate SSH Key Pair ssh-keygen -C &amp;quot;zhaohuabing@gmail.com&amp;quot; Shadowsocks Install shadowsokcs sudo apt-get install python3-pip sudo pip3 install shadowsocks Create config at config/shadowsocks.json, with the following content: { &amp;quot;server&amp;quot;:&amp;quot;remote-shadowsocks-server-ip-addr&amp;quot;, &amp;quot;server_port&amp;quot;:443, &amp;quot;local_address&amp;quot;:&amp;quot;127.0.0.1&amp;quot;, &amp;quot;local_port&amp;quot;:1080, &amp;quot;password&amp;quot;:&amp;quot;your-passwd&amp;quot;, &amp;quot;timeout&amp;quot;:300, &amp;quot;method&amp;quot;:&amp;quot;aes-256-cfb&amp;quot;, &amp;quot;fast_open&amp;quot;:false, &amp;quot;workers&amp;quot;:1 } Start a local socks proxy sudo sslocal -c config/shadowsocks.json -d start In case there is an openssl error, modify shadowsocks source file. sudo vi /usr/local/lib/python3.6/dist-packages/shadowsocks/crypto/openssl.py :%s/cleanup/reset/gc Convert shadowsocks socks proxy to http proxy</description>
     </item>
     
     <item>
@@ -141,12 +141,12 @@
       <guid>https://yenyentest.github.io/2018/03/13/use-docker-behind-http-proxy/</guid>
       <description>&lt;h2 id=&#34;ubuntu&#34;&gt;Ubuntu&lt;/h2&gt;
 &lt;h3 id=&#34;设置docker使用http-proxy&#34;&gt;设置docker使用http proxy&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo /etc/default/docker
+&lt;pre&gt;&lt;code&gt;sudo /etc/default/docker
 
-export http_proxy=&amp;#34;http://127.0.0.1:3128/&amp;#34;
-export https_proxy=&amp;#34;http://127.0.0.1:3128/&amp;#34;
-export HTTP_PROXY=&amp;#34;http://127.0.0.1:3128/&amp;#34;
-export HTTPS_PROXY=&amp;#34;http://127.0.0.1:3128/&amp;#34;
+export http_proxy=&amp;quot;http://127.0.0.1:3128/&amp;quot;
+export https_proxy=&amp;quot;http://127.0.0.1:3128/&amp;quot;
+export HTTP_PROXY=&amp;quot;http://127.0.0.1:3128/&amp;quot;
+export HTTPS_PROXY=&amp;quot;http://127.0.0.1:3128/&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     

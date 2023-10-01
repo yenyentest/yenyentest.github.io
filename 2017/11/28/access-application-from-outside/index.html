@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     
-    <meta property="og:site_name" content="NTSU SBMD Lab">
+    <meta property="og:site_name" content="NTSU SBMD Lab haha">
     <meta property="og:type" content="article">
 
     
@@ -88,7 +88,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">NTSU SBMD Lab</a>
+            <a class="navbar-brand" href="/">NTSU SBMD Lab haha</a>
         </div>
 
         
@@ -253,7 +253,7 @@
 
 </p>
 <p>下面是通过NodePort向外暴露服务的一个例子，注意可以指定一个nodePort，也可以不指定。在不指定的情况下，kubernetes会从可用的端口范围内自动分配一个随机端口。</p>
-<pre tabindex="0"><code>kind: Service
+<pre><code>kind: Service
 apiVersion: v1
 metadata:
   name: influxdb
@@ -279,7 +279,7 @@ spec:
 <p>因此，需要通过一个网关来将外部客户端的请求导入到Cluster中的应用中，在kubernetes中，这个网关是一个4层的load balancer。</p>
 <h2 id="通过load-balancer提供外部访问入口">通过Load Balancer提供外部访问入口</h2>
 <p>通过将Service的类型设置为LoadBalancer，可以为Service创建一个外部Load Balancer。Kubernetes的文档中声明该Service类型需要云服务提供商的支持，其实这里只是在Kubernetes配置文件中提出了一个要求，即为该Service创建Load Balancer，至于如何创建则是由Google Cloud或Amazon Cloud等云服务商提供的，创建的Load Balancer不在Kubernetes Cluster的管理范围中。kubernetes 1.6版本中，WS, Azure, CloudStack, GCE and OpenStack等云提供商已经可以为Kubernetes提供Load Balancer.下面是一个Load balancer类型的Service例子：</p>
-<pre tabindex="0"><code>kind: Service
+<pre><code>kind: Service
 apiVersion: v1
 metadata:
   name: influxdb
@@ -290,12 +290,12 @@ spec:
   selector:
     name: influxdb
 </code></pre><p>部署该Service后，我们来看一下Kubernetes创建的内容</p>
-<pre tabindex="0"><code>$ kubectl get svc influxdb
+<pre><code>$ kubectl get svc influxdb
 NAME       CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
 influxdb   10.97.121.42   10.13.242.236   8086:30051/TCP   39s
 </code></pre><p>Kubernetes首先为influxdb创建了一个集群内部可以访问的ClusterIP 10.97.121.42。由于没有指定nodeport端口，kubernetes选择了一个空闲的30051主机端口将service暴露在主机的网络上，然后通知cloud provider创建了一个load balancer，上面输出中的EEXTERNAL-IP就是load balancer的IP。</p>
 <p>测试使用的Cloud Provider是OpenStack，我们通过neutron lb-vip-show可以查看创建的Load Balancer详细信息。</p>
-<pre tabindex="0"><code>$ neutron lb-vip-show 9bf2a580-2ba4-4494-93fd-9b6969c55ac3
+<pre><code>$ neutron lb-vip-show 9bf2a580-2ba4-4494-93fd-9b6969c55ac3
 +---------------------+--------------------------------------------------------------+
 | Field               | Value                                                        |
 +---------------------+--------------------------------------------------------------+
@@ -370,7 +370,7 @@ $ neutron lb-member-list
 
 这里Ingress起到了七层负载均衡器和Http方向代理的作用，可以根据不同的url把入口流量分发到不同的后端Service。外部客户端只看到foo.bar.com这个服务器，屏蔽了内部多个Service的实现方式。采用这种方式，简化了客户端的访问，并增加了后端实现和部署的灵活性，可以在不影响客户端的情况下对后端的服务部署进行调整。</p>
 <p>下面是Kubernetes Ingress配置文件的示例，在虚拟主机foot.bar.com下面定义了两个Path，其中/foo被分发到后端服务s1，/bar被分发到后端服务s2。</p>
-<pre tabindex="0"><code>apiVersion: extensions/v1beta1
+<pre><code>apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: test
@@ -391,7 +391,7 @@ spec:
           servicePort: 80
 </code></pre><p>注意这里Ingress只描述了一个虚拟主机路径分发的要求，可以定义多个Ingress，描述不同的7层分发要求，而这些要求需要由一个Ingress Controller来实现。Ingress Contorller会监听Kubernetes Master得到Ingress的定义，并根据Ingress的定义对一个7层代理进行相应的配置，以实现Ingress定义中要求的虚拟主机和路径分发规则。Ingress Controller有多种实现，Kubernetes提供了一个<a href="https://github.com/kubernetes/ingress-nginx">基于Nginx的Ingress Controller</a>。需要注意的是，在部署Kubernetes集群时并不会缺省部署Ingress Controller，需要我们自行部署。</p>
 <p>下面是部署Nginx Ingress Controller的配置文件示例，注意这里为Nginx Ingress Controller定义了一个LoadBalancer类型的Service，以为Ingress Controller提供一个外部可以访问的公网IP。</p>
-<pre tabindex="0"><code>apiVersion: v1
+<pre><code>apiVersion: v1
 kind: Service
 metadata:
   name: nginx-ingress
@@ -456,7 +456,7 @@ spec:
 <div class="zs-modal-box">
 	<div class="zs-modal-head">
 		<button type="button" class="close">×</button>
-		<span class="author"><a href="https://yenyentest.github.io"><img src="/img/favicon.png" />NTSU SBMD Lab</a></span>
+		<span class="author"><a href="https://yenyentest.github.io"><img src="/img/favicon.png" />NTSU SBMD Lab haha</a></span>
         
 	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
 		
@@ -692,7 +692,7 @@ spec:
             
            
                    <li>
-                       <a href='' rel="alternate" type="application/rss+xml" title="NTSU SBMD Lab" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="NTSU SBMD Lab haha" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -702,7 +702,7 @@ spec:
             
              </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; NTSU SBMD Lab 2023
+                    Copyright &copy; NTSU SBMD Lab haha 2023
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
