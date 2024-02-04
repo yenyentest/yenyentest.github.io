@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     
-    <meta property="og:site_name" content="SU SBMD Lab">
+    <meta property="og:site_name" content="willson NTSU SBMD Lab">
     <meta property="og:type" content="article">
 
     
@@ -88,7 +88,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">SU SBMD Lab</a>
+            <a class="navbar-brand" href="/">willson NTSU SBMD Lab</a>
         </div>
 
         
@@ -259,26 +259,26 @@
 <li>Header<!-- raw HTML omitted -->
 头部包含类型,为固定值JWT。然后是JWT使用的Hash算法。</li>
 </ul>
-<pre><code>{
-  &quot;alg&quot;: &quot;HS256&quot;,
-  &quot;typ&quot;: &quot;JWT&quot;
+<pre tabindex="0"><code>{
+  &#34;alg&#34;: &#34;HS256&#34;,
+  &#34;typ&#34;: &#34;JWT&#34;
 }
 </code></pre><ul>
 <li>Payload<!-- raw HTML omitted -->
 包含发布者，过期时间，用户名等标准信息，也可以添加用户角色，用户自定义的信息。</li>
 </ul>
-<pre><code>{
-  &quot;sub&quot;: &quot;1234567890&quot;,
-  &quot;name&quot;: &quot;John Doe&quot;,
-  &quot;admin&quot;: true
+<pre tabindex="0"><code>{
+  &#34;sub&#34;: &#34;1234567890&#34;,
+  &#34;name&#34;: &#34;John Doe&#34;,
+  &#34;admin&#34;: true
 }
 </code></pre><ul>
 <li>Signature<!-- raw HTML omitted -->
 Token颁发方的签名，用于客户端验证Token颁发方的身份，也用于服务器防止Token被篡改。
 签名算法</li>
 </ul>
-<pre><code>HMACSHA256(
-  base64UrlEncode(header) + &quot;.&quot; +
+<pre tabindex="0"><code>HMACSHA256(
+  base64UrlEncode(header) + &#34;.&#34; +
   base64UrlEncode(payload),
   secret)
 </code></pre><p>这三部分使用Base64编码后组合在一起，成为最终返回给客户端的Token串，每部分之间采用&quot;.&ldquo;分隔。下图是上面例子最终形成的Token
@@ -287,7 +287,7 @@ Token颁发方的签名，用于客户端验证Token颁发方的身份，也用�
 
 
 采用Token进行用户认证，服务器端不再保存用户状态，客户端每次请求时都需要将Token发送到服务器端进行身份验证。Token发送的方式<a href="https://tools.ietf.org/html/rfc6750">rfc6750</a>进行了规定，采用一个 Authorization: Bearer HHTP Header进行发送。</p>
-<pre><code>Authorization: Bearer mF_9.B5f-4.1JqM
+<pre tabindex="0"><code>Authorization: Bearer mF_9.B5f-4.1JqM
 </code></pre><p>采用Token方式进行用户认证的基本流程如下图所示：</p>
 <ol>
 <li>用户输入用户名,密码等验证信息，向服务器发起登录请求</li>
@@ -378,7 +378,7 @@ Token颁发方的签名，用于客户端验证Token颁发方的身份，也用�
 <div class="zs-modal-box">
 	<div class="zs-modal-head">
 		<button type="button" class="close">×</button>
-		<span class="author"><a href="https://yenyentest.github.io"><img src="/img/favicon.png" />SU SBMD Lab</a></span>
+		<span class="author"><a href="https://yenyentest.github.io"><img src="/img/favicon.png" />willson NTSU SBMD Lab</a></span>
         
 	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
 		
@@ -614,7 +614,7 @@ Token颁发方的签名，用于客户端验证Token颁发方的身份，也用�
             
            
                    <li>
-                       <a href='' rel="alternate" type="application/rss+xml" title="SU SBMD Lab" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="willson NTSU SBMD Lab" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -624,7 +624,7 @@ Token颁发方的签名，用于客户端验证Token颁发方的身份，也用�
             
              </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; SU SBMD Lab 2023
+                    Copyright &copy; willson NTSU SBMD Lab 2024
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

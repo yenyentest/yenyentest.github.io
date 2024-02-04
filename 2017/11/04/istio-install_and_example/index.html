@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     
-    <meta property="og:site_name" content="SU SBMD Lab">
+    <meta property="og:site_name" content="willson NTSU SBMD Lab">
     <meta property="og:type" content="article">
 
     
@@ -88,7 +88,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">SU SBMD Lab</a>
+            <a class="navbar-brand" href="/">willson NTSU SBMD Lab</a>
         </div>
 
         
@@ -267,10 +267,10 @@ Rancher Server: 10.12.25.60<br>
 <h3 id="在server和工作节点上安装docker">在server和工作节点上安装docker</h3>
 <p>因为k8s并不支持最新版本的docker，因此需根据该页面安装指定版本的docker<br>
 <a href="http://rancher.com/docs/rancher/v1.6/en/hosts/">http://rancher.com/docs/rancher/v1.6/en/hosts/</a> ,目前是1.12版本。</p>
-<pre><code>curl https://releases.rancher.com/install-docker/1.12.sh | sh
+<pre tabindex="0"><code>curl https://releases.rancher.com/install-docker/1.12.sh | sh
 </code></pre><p>如果需要以非root用户执行docker命令，参考<a href="http://zhaohuabing.com/2018/02/09/docker-without-sudo/">如何使用非root用户执行docker命令</a>。</p>
 <h3 id="启动rancher-server">启动Rancher server</h3>
-<pre><code>sudo docker run -d --restart=always -p 8080:8080 rancher/server
+<pre tabindex="0"><code>sudo docker run -d --restart=always -p 8080:8080 rancher/server
 </code></pre><h3 id="登录rancher管理界面创建k8s集群">登录Rancher管理界面，创建k8s集群</h3>
 <p>Rancher 管理界面的缺省端口为8080，在浏览器中打开该界面，通过菜单Default-&gt;Manage Environment-&gt;Add Environment添加一个kubernetes集群。这里需要输入名称kubernetes，描述，然后选择kubernetes template，点击create，创建Kubernetes环境。
   <img src="/img/istio-install_and_example/Rancher.PNG" alt="">
@@ -284,7 +284,7 @@ Rancher Server: 10.12.25.60<br>
 <p>host加入cluster后Rancher会在host上pull kubernetes的images并启动kubernetes相关服务，根据安装环境所在网络情况不同需要等待几分钟到几十分钟不等。</p>
 <h3 id="安装并配置kubectl">安装并配置kubectl</h3>
 <p>待Rancher界面提示kubernetes创建成功后，安装kubernetes命令行工具kubectl</p>
-<pre><code>curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.7.4/bin/linux/amd64/kubectl
+<pre tabindex="0"><code>curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.7.4/bin/linux/amd64/kubectl
 
 chmod +x ./kubectl
 
@@ -295,22 +295,22 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 </p>
 <h2 id="安装istio">安装Istio</h2>
 <p>Istio提供了安装脚本，该脚本会根据操作系统下载相应的Istio安装包并解压到当前目录。</p>
-<pre><code> curl -L https://git.io/getLatestIstio | sh -
+<pre tabindex="0"><code> curl -L https://git.io/getLatestIstio | sh -
 </code></pre><p>根据脚本的提示将Istio命令行所在路径加入到系统PATH环境变量中</p>
-<pre><code>export PATH=&quot;$PATH:/home/ubuntu/istio-0.2.10/bin&quot;
+<pre tabindex="0"><code>export PATH=&#34;$PATH:/home/ubuntu/istio-0.2.10/bin&#34;
 </code></pre><p>在kubernetes集群中部署Istio控制面服务</p>
-<pre><code>kubectl apply -f istio-0.2.10/install/kubernetes/istio.yaml
+<pre tabindex="0"><code>kubectl apply -f istio-0.2.10/install/kubernetes/istio.yaml
 </code></pre><p>确认Istio控制面服务已成功部署。Kubernetes会创建一个istio-system namespace，将Istio相关服务部署在该namespace中。</p>
 <p>确认Istio相关Service的部署状态</p>
-<pre><code>kubectl get svc -n istio-system
-</code></pre><pre><code>NAME            CLUSTER-IP      EXTERNAL-IP        PORT(S)                                                  AGE
+<pre tabindex="0"><code>kubectl get svc -n istio-system
+</code></pre><pre tabindex="0"><code>NAME            CLUSTER-IP      EXTERNAL-IP        PORT(S)                                                  AGE
 istio-egress    10.43.192.74    &lt;none&gt;             80/TCP                                                   25s
 istio-ingress   10.43.16.24     10.12.25.116,...   80:30984/TCP,443:30254/TCP                               25s
 istio-mixer     10.43.215.250   &lt;none&gt;             9091/TCP,9093/TCP,9094/TCP,9102/TCP,9125/UDP,42422/TCP   26s
 istio-pilot     10.43.211.140   &lt;none&gt;             8080/TCP,443/TCP                                         25s
 </code></pre><p>确认Istio相关Pod的部署状态</p>
-<pre><code>kubectl get pods -n istio-system
-</code></pre><pre><code>NAME                             READY     STATUS    RESTARTS   AGE
+<pre tabindex="0"><code>kubectl get pods -n istio-system
+</code></pre><pre tabindex="0"><code>NAME                             READY     STATUS    RESTARTS   AGE
 istio-ca-367485603-qvbfl         1/1       Running   0          2m
 istio-egress-3571786535-gwbgk    1/1       Running   0          2m
 istio-ingress-2270755287-phwvq   1/1       Running   0          2m
@@ -321,10 +321,10 @@ istio-pilot-2278433625-68l34     1/1       Running   0          2m
 <h2 id="部署bookinfo示例程序">部署Bookinfo示例程序</h2>
 <p>在下载的Istio安装包的samples目录中包含了示例应用程序。</p>
 <p>通过下面的命令部署Bookinfo应用</p>
-<pre><code>kubectl apply -f &lt;(istioctl kube-inject -f istio-0.2.10/samples/bookinfo/kube/bookinfo.yaml)
+<pre tabindex="0"><code>kubectl apply -f &lt;(istioctl kube-inject -f istio-0.2.10/samples/bookinfo/kube/bookinfo.yaml)
 </code></pre><p>确认Bookinfo服务已经启动</p>
-<pre><code>kubectl get services
-</code></pre><pre><code>NAME          CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+<pre tabindex="0"><code>kubectl get services
+</code></pre><pre tabindex="0"><code>NAME          CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 details       10.43.175.204   &lt;none&gt;        9080/TCP   6m
 kubernetes    10.43.0.1       &lt;none&gt;        443/TCP    5d
 productpage   10.43.19.154    &lt;none&gt;        9080/TCP   6m
@@ -339,10 +339,10 @@ reviews       10.43.219.248   &lt;none&gt;        9080/TCP   6m
 <h2 id="理解istio-proxy实现原理">理解Istio Proxy实现原理</h2>
 <p>服务网格相对于sprint cloud等微服务代码库的一大优势是其对应用程序无侵入，在不修改应用程序代码的前提下对应用服务之间的通信进行接管，Istio是如何做到这点的呢？下面通过示例程序的部署剖析其中的原理。</p>
 <p>如果熟悉kubernetes的应用部署过程，我们知道Bookinfo应用程序的标准部署方式是这样的：</p>
-<pre><code>kubectl apply -f istio-0.2.10/samples/bookinfo/kube/bookinfo.yaml
+<pre tabindex="0"><code>kubectl apply -f istio-0.2.10/samples/bookinfo/kube/bookinfo.yaml
 </code></pre><p>但从上面的部署过程可以看到，kubectl apply命令的输入并不是一个kubernetes yaml文件，而是<code>istioctl kube-inject -f istio-0.2.10/samples/bookinfo/kube/bookinfo.yaml</code>命令的输出。</p>
 <p>这段命令在这里起到了什么作用呢？通过单独运行该命令并将输出保存到文件中，我们可以查看istioctl kube-inject命令到底在背后搞了什么小动作。</p>
-<pre><code>istioctl kube-inject -f istio-0.2.10/samples/bookinfo/kube/bookinfo.yaml &gt;&gt; bookinfo_with_sidecar.yaml
+<pre tabindex="0"><code>istioctl kube-inject -f istio-0.2.10/samples/bookinfo/kube/bookinfo.yaml &gt;&gt; bookinfo_with_sidecar.yaml
 </code></pre><p>对比bookinfo/_with/_sidecar.yaml文件和bookinfo.yaml，可以看到该命令在bookinfo.yaml的基础上做了如下改动：</p>
 <ul>
 <li>
@@ -352,7 +352,7 @@ reviews       10.43.219.248   &lt;none&gt;        9080/TCP   6m
 <p>为每个pod增加了一个init-container，该container用于配置iptable，将应用container的流量导入到代理container中。</p>
 </li>
 </ul>
-<pre><code>  #注入istio 网络代理
+<pre tabindex="0"><code>  #注入istio 网络代理
   image: docker.io/istio/proxy_debug:0.2.10
         imagePullPolicy: IfNotPresent
         name: istio-proxy
@@ -371,15 +371,15 @@ reviews       10.43.219.248   &lt;none&gt;        9080/TCP   6m
       initContainers:
       - args:
         - -p
-        - &quot;15001&quot;
+        - &#34;15001&#34;
         - -u
-        - &quot;1337&quot;
+        - &#34;1337&#34;
         image: docker.io/istio/proxy_init:0.2.10
         imagePullPolicy: IfNotPresent
         name: istio-init
 </code></pre><p>从上面的分析，我们可以看出Istio的kube-inject工具的用途即是将代理sidecar注入了Bookinfo的kubernetes yaml部署文件中。通过该方式，不需要用户手动修改kubernetes的部署文件，即可在部署服务时将sidecar和应用一起部署。</p>
 <p>通过命令查看pod中部署的docker container，确认是否部署了Istio代理</p>
-<pre><code>kubectl get pods
+<pre tabindex="0"><code>kubectl get pods
 
 NAME                              READY     STATUS    RESTARTS   AGE
 details-v1-3688945616-8hv8x       2/2       Running   0          1d
@@ -389,22 +389,22 @@ reviews-v1-1360980140-474x6       2/2       Running   0          1d
 reviews-v2-1193607610-cfhb5       2/2       Running   0          1d
 reviews-v3-3340858212-b5c8k       2/2       Running   0          1d
 </code></pre><p>查看reviews pod的中的container，可以看到pod中除reviews container外还部署了一个istio-proxy container</p>
-<pre><code>kubectl get pod reviews-v3-3340858212-b5c8k -o jsonpath='{.spec.containers[*].name}'
+<pre tabindex="0"><code>kubectl get pod reviews-v3-3340858212-b5c8k -o jsonpath=&#39;{.spec.containers[*].name}&#39;
 
 reviews istio-proxy
 </code></pre><p>而应用container的流量是如何被导入到istio-proxy中的呢？</p>
 <p>原理是Istio proxy在端口15001进行监听，pod中应用container的流量通过iptables规则被重定向到15001端口中。下面我们进入pod内部，通过相关命令来验证这一点。</p>
 <p>先通过命令行找到ratings-v1-233971408-8dcnp pod的PID，以用于查看其network namespace內的iptables规则。</p>
-<pre><code>CONTAINER_ID=$(kubectl get po ratings-v1-233971408-8dcnp -o jsonpath='{.status.containerStatuses[0].containerID}' | cut -c 10-21)
+<pre tabindex="0"><code>CONTAINER_ID=$(kubectl get po ratings-v1-233971408-8dcnp -o jsonpath=&#39;{.status.containerStatuses[0].containerID}&#39; | cut -c 10-21)
 
-PID=$(sudo docker inspect --format '{{ .State.Pid }}' $CONTAINER_ID)
+PID=$(sudo docker inspect --format &#39;{{ .State.Pid }}&#39; $CONTAINER_ID)
 </code></pre><p>可以使用nsenter命令来进入pod的network namespace执行命令。<br>
 使用netstat命令可以看到istio proxy代理的监听端口15001</p>
-<pre><code>sudo nsenter -t ${PID} -n netstat -all | grep 15001
+<pre tabindex="0"><code>sudo nsenter -t ${PID} -n netstat -all | grep 15001
 
 tcp        0      0 *:15001                 *:*                     LISTEN
 </code></pre><p>使用iptables命令可以查看到下面的规则</p>
-<pre><code>sudo nsenter -t ${PID} -n iptables -t nat -L -n -v
+<pre tabindex="0"><code>sudo nsenter -t ${PID} -n iptables -t nat -L -n -v
 
 Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination
@@ -439,7 +439,7 @@ Chain ISTIO_REDIRECT (3 references)
 
 </p>
 <p>通过创建一条路由规则route-rule.yaml，将请求流量都引导到Reviews-v1服务上</p>
-<pre><code>apiVersion: config.istio.io/v1alpha2
+<pre tabindex="0"><code>apiVersion: config.istio.io/v1alpha2
 kind: RouteRule
 metadata:
   name: reviews-default
@@ -451,18 +451,18 @@ spec:
   - labels:
       version: v1
 </code></pre><p>启用该路由规则</p>
-<pre><code>istioctl create -f route-rule.yaml -n default
+<pre tabindex="0"><code>istioctl create -f route-rule.yaml -n default
 </code></pre><p>再次打开productpage页面, 无论刷新多少次，显示的页面将始终是v1版本的输出，即不带星的评价内容。<br>
 
   <img src="/img/istio-install_and_example/Bookinfo-no-star.PNG" alt="">
 
 <br>
 删除该路由规则</p>
-<pre><code>istioctl delete -f route_rule.yaml -n default
+<pre tabindex="0"><code>istioctl delete -f route_rule.yaml -n default
 </code></pre><p>继续刷新productpage页面,将重新随机出现三个版本的评价内容页面。</p>
 <h2 id="分布式调用追踪">分布式调用追踪</h2>
 <p>首先修改安装包中的 <code>istio-0.2.10/install/kubernetes/addons/zipkin.yaml</code> 部署文件，增加Nodeport,以便能在kubernetes集群外部访问zipkin界面。</p>
-<pre><code>apiVersion: v1
+<pre tabindex="0"><code>apiVersion: v1
 kind: Service
 metadata:
   name: zipkin
@@ -476,7 +476,7 @@ spec:
     app: zipkin
   type: NodePort
 </code></pre><p>部署zipkin服务。</p>
-<pre><code>kubectl apply -f istio-0.2.10/install/kubernetes/addons/zipkin.yaml
+<pre tabindex="0"><code>kubectl apply -f istio-0.2.10/install/kubernetes/addons/zipkin.yaml
 </code></pre><p>在浏览器中打开zipkin页面，可以追踪一个端到端调用经过了哪些服务，以及各个服务花费的时间等详细信息，如下图所示：<br>
 <code>http://10.12.25.116:30001</code><br>
 
@@ -485,7 +485,7 @@ spec:
 </p>
 <h2 id="性能指标监控">性能指标监控</h2>
 <p>首先修改安装包中的 <code>istio-0.2.10/install/kubernetes/addons/grafana.yaml</code> 部署文件，增加Nodeport,以便能在kubernetes集群外部访问grafana界面。</p>
-<pre><code>apiVersion: v1
+<pre tabindex="0"><code>apiVersion: v1
 kind: Service
 metadata:
   name: grafana
@@ -500,7 +500,7 @@ spec:
     app: grafana
   type: NodePort
 </code></pre><p>prometheus用于收集和存储信息指标，grafana用于将性能指标信息进行可视化呈现，需要同时部署prometheus和grafana服务。</p>
-<pre><code>kubectl apply -f istio-0.2.10/install/kubernetes/addons/prometheus.yaml
+<pre tabindex="0"><code>kubectl apply -f istio-0.2.10/install/kubernetes/addons/prometheus.yaml
 
 kubectl apply -f istio-0.2.10/install/kubernetes/addons/grafana.yaml
 </code></pre><p>首先在浏览器中打开Bookinfo的页面<code>http://10.12.25.116/productpage</code>，刷新几次，以制造一些性能指标数据。</p>
@@ -529,7 +529,7 @@ kubectl apply -f istio-0.2.10/install/kubernetes/addons/grafana.yaml
 <div class="zs-modal-box">
 	<div class="zs-modal-head">
 		<button type="button" class="close">×</button>
-		<span class="author"><a href="https://yenyentest.github.io"><img src="/img/favicon.png" />SU SBMD Lab</a></span>
+		<span class="author"><a href="https://yenyentest.github.io"><img src="/img/favicon.png" />willson NTSU SBMD Lab</a></span>
         
 	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
 		
@@ -765,7 +765,7 @@ kubectl apply -f istio-0.2.10/install/kubernetes/addons/grafana.yaml
             
            
                    <li>
-                       <a href='' rel="alternate" type="application/rss+xml" title="SU SBMD Lab" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="willson NTSU SBMD Lab" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -775,7 +775,7 @@ kubectl apply -f istio-0.2.10/install/kubernetes/addons/grafana.yaml
             
              </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; SU SBMD Lab 2023
+                    Copyright &copy; willson NTSU SBMD Lab 2024
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     
-    <meta property="og:site_name" content="SU SBMD Lab">
+    <meta property="og:site_name" content="willson NTSU SBMD Lab">
     <meta property="og:type" content="article">
 
     
@@ -88,7 +88,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">SU SBMD Lab</a>
+            <a class="navbar-brand" href="/">willson NTSU SBMD Lab</a>
         </div>
 
         
@@ -236,7 +236,7 @@
 <p>采用VirtualService代替了alpha2模型中的RouteRule。采用VirtualService有两个优势：</p>
 <p><strong>可以把一个服务相关的规则放在一起管理</strong></p>
 <p>例如下面的路由规则，发向reviews的请求流量缺省destination为v1，如果user为jason则路由到v2。在v1模型中需要采用两条规则来实现，采用VirtualService后放到一个规则下就可以实现。</p>
-<pre><code>apiVersion: networking.istio.io/v1alpha3
+<pre tabindex="0"><code>apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: reviews
@@ -247,7 +247,7 @@ spec:
   - match:
     - headers:
         cookie:
-          regex: &quot;^(.*?;)?(user=jason)(;.*)?$&quot;
+          regex: &#34;^(.*?;)?(user=jason)(;.*)?$&#34;
     route:
     - destination:
         host: reviews
@@ -258,7 +258,7 @@ spec:
         subset: v1
 </code></pre><p><strong>可以对外暴露一个并不存在的“虚拟服务”，然后将该“虚拟服务”映射到Istio中的Service上</strong></p>
 <p>下面规则中的bookinfo.com是对外暴露的“虚拟服务”，bookinfo.com/reviews被映射到了reviews服务，bookinfo.com/ratings被映射到了ratings服务。通过采用VirtualService，极大地增强了Istio路由规则的灵活性，有利于Legacy系统和Istio的集成。</p>
-<pre><code>apiVersion: networking.istio.io/v1alpha3
+<pre tabindex="0"><code>apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: bookinfo
@@ -319,7 +319,7 @@ spec:
 <div class="zs-modal-box">
 	<div class="zs-modal-head">
 		<button type="button" class="close">×</button>
-		<span class="author"><a href="https://yenyentest.github.io"><img src="/img/favicon.png" />SU SBMD Lab</a></span>
+		<span class="author"><a href="https://yenyentest.github.io"><img src="/img/favicon.png" />willson NTSU SBMD Lab</a></span>
         
 	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
 		
@@ -555,7 +555,7 @@ spec:
             
            
                    <li>
-                       <a href='' rel="alternate" type="application/rss+xml" title="SU SBMD Lab" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="willson NTSU SBMD Lab" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -565,7 +565,7 @@ spec:
             
              </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; SU SBMD Lab 2023
+                    Copyright &copy; willson NTSU SBMD Lab 2024
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
